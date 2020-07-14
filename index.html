@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <script src="dist/monitor-sdk.js"></script>
+    <style>
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: orange;
+      }
+
+      #box {
+        width: 200px;
+        height: 200px;
+        background-color: green;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="box">123</div>
+
+    <script>
+      new MonitorSdk()
+
+      const p1 = new Promise((resolve, reject) => {
+        setTimeout(() => {
+          console.log('resolved')
+          resolve(1)
+        }, 3000)
+        reject(2)
+      })
+
+      p1.then(res => {
+        console.log(res)
+      })
+
+      function a () {
+        b()
+      }
+      function b () {
+        c()
+      }
+      function c () {
+        console.log('ssssssssssss', this.name.age.gege)
+      }
+      a()
+    </script>
+  </body>
+</html>
